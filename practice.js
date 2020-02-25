@@ -109,4 +109,15 @@ function rockPaperScissors(shoot){
   return `You chose ${key[shoot]} and the computer chose ${key[computer]}: ${result}`;
 }
 
-console.log(rockPaperScissors(3));
+// console.log(rockPaperScissors(3));
+
+
+function reverser(string){
+  let result = '';
+  for(let i=string.length-1; i>= 0; i--){
+    result += string.charAt(i);
+  }
+  return result;
+}
+
+console.log(reverser('hello'));
