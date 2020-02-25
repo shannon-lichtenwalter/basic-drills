@@ -11,35 +11,38 @@
  * a ")".
  */
 
-// the following will be done without the stack/queue.
 
 function parentheses(string) {
-  let counter = 0;
-  let forwards = [];
-  let backwards = [];
-  for (let i = string.length - 1; i >= 0; i--) {
-    if (string.charAt(counter) === '(' || string.charAt(counter) === ')') {
-      forwards.push(string.charAt(counter));
-    }
-    if (string.charAt(i) === '(' || string.charAt(i) === ')') {
-      backwards.push(string.charAt(i));
-    }
-    counter++;
-  }
-  console.log(forwards);
-  console.log(backwards);
-  if (forwards[0] === ')'){
-    return 'You are missing a \'(\'';
-  }
+  let stack = [];
+  let map = {
+    '(':')',
+    '{': '}',
+    '[': ']',
+  };
 
-  for (let i = 0; i < forwards.length; i++) {
-    if (forwards[i] === '(' && backwards[i] !== ')') {
-      return 'You are missing a \')\'';
-    } else if (forwards[i] === ')' && backwards[i] !== '(') {
-      return 'You are missing a \'(\'';
+  for (let i=0; i< string.length; i++) {
+    //push all the open parenthesis types into stack
+    if (string[i] === '(' || string[i] === '{' || string[i] === '[') {
+      stack.push(string[i]);
     }
+    //if we reach a closing bracket, we need to make sure the last parenthesis before it was an open bracket.
+    //check the last item in the stack to see if it matches the closing bracket type.
+    if (string[i] === ')' || string[i] === '}' || string[i] === ']') {
+      let last = stack.pop();
+      if(map[last] !== string.charAt(i)){
+        return `You are missing ${map[last]}`;
+      }
+    }
+  }
+  //if any extra parenthesis remain in the stack that means there is an uneven num of parenthesis and therefore
+  //we are missing a parenthesis somewhere.
+  if(stack.length !== 0){
+    let last = stack.pop();
+    return `You are missing ${map[last]}`;
   }
 return 'You have all the parentheses';
 }
 
-console.log(parentheses('x*(x+z) + x/(y-z) + d'));
+console.log(parentheses('(){}'));
+console.log(parentheses('[{()()}({[]})]({}[({})])((((((()[])){}))[]{{{({({({{{{{{}}}}}})})})}}}))[][][]'));
+console.log(parentheses('({(()))}}'));
