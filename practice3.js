@@ -84,10 +84,10 @@ function parenthesis(string){
   return 'All parentheses present';
 }
 
-console.log(parenthesis('(){}]'));
-console.log(parenthesis('[{()()}({[]})]({}[({})])((((((()[])){}))[]{{{({({({{{{{{}}}}}})})})}}}))[][][]'));
-console.log(parenthesis('({(()))}}'));
-console.log(parenthesis(')({(()))}}('));
+// console.log(parenthesis('(){}]'));
+// console.log(parenthesis('[{()()}({[]})]({}[({})])((((((()[])){}))[]{{{({({({{{{{{}}}}}})})})}}}))[][][]'));
+// console.log(parenthesis('({(()))}}'));
+// console.log(parenthesis(')({(()))}}('));
 
 //find Min
 
@@ -109,4 +109,97 @@ function min(array){
   return min;
 }
 
-console.log(min([1, 'a', 1, 2, -10]));
+// console.log(min([1, 'a', 1, 2, -10]));
+
+
+// var maxProfit = function(prices) {
+//   let profit=0;
+//   let day=0;
+//   for(let i=0; i<prices.length; i++){
+//       for(let j=i+1; j<prices.length; j++){
+//           if(prices[i] < prices[j]){
+//               let positiveValue= prices[j]-prices[i];
+//               if(positiveValue > profit){
+//                   profit= positiveValue;
+//                   day=[i+1];
+//               }
+//           }
+//       }
+//   }
+//   return profit;
+// };
+
+// console.log(maxProfit([10,3,9,3,10,1000,1000]));
+
+function maxProfit(prices){
+  if(prices.length <2){
+    return 0;
+  }
+
+  let buyPrice=prices[0];
+  let maxProfit= 0;
+  for(let i=1; i<prices.length; i++){
+    if(buyPrice > prices[i]){
+      buyPrice = prices[i];
+    }
+    if(maxProfit < prices[i] - buyPrice){
+      maxProfit = prices[i]-buyPrice;
+    }
+  }
+  return maxProfit;
+}
+
+// console.log(maxProfit([7,1,5,3,6,4]));
+
+
+
+
+//remove duplicates from an array;
+
+function duplicates(array){
+  let values = {};
+
+  for(let i=0; i<array.length; i++) {
+    if(!values[array[i]]){
+      values[array[i]]= true;
+  } else {
+    array.splice(i,1);
+    i--;
+  }
+}
+  return array;
+}
+
+// console.log(duplicates([1,1,1,1,1,2,3,3,4,5,5,6]));
+
+// var removeDuplicates = function(nums) {
+//   let values={};
+//   let prevValue=nums[0];
+//   for(let i=1; i<nums.length; i++){
+//       let num = nums[i];
+//       if(num === prevValue){
+//           nums.splice(i, 1);
+//           i--;
+//       }
+//       prevValue=num;
+//   }
+//   return nums;
+// };
+
+// console.log(removeDuplicates([1,1,2]));
+
+var removeDuplicates = function(nums) {
+  let values = {};
+
+  for(let i=0; i<nums.length; i++) {
+    if(!values[nums[i]]){
+      values[nums[i]]= true;
+  } else {
+    nums.splice(i,1);
+    i--;
+  }
+}
+  return nums;
+};
+
+console.log(removeDuplicates([1,1,2]));
