@@ -88,3 +88,25 @@ console.log(parenthesis('(){}]'));
 console.log(parenthesis('[{()()}({[]})]({}[({})])((((((()[])){}))[]{{{({({({{{{{{}}}}}})})})}}}))[][][]'));
 console.log(parenthesis('({(()))}}'));
 console.log(parenthesis(')({(()))}}('));
+
+//find Min
+
+function min(array){
+  if(array.length === 0){
+    return 'Must provide array of numbers';
+  }
+
+  let min = array[0];
+  for(let i=1; i< array.length; i++){
+    if(!Number(min) || !Number(array[i])){
+      return 'Array must only contain numbers';
+    }
+
+    if(array[i] < min){
+      min = array[i];
+    }
+  }
+  return min;
+}
+
+console.log(min([1, 'a', 1, 2, -10]));
