@@ -60,7 +60,7 @@ function parenthesis(string){
   };
 
   for(let i=0; i<string.length; i++){
-    if(string[i] === '(' || string[i]==='{' || string[i]==='['){
+    if(key[string[i]]){
       stack.push(string[i]);
     }
 
@@ -84,10 +84,10 @@ function parenthesis(string){
   return 'All parentheses present';
 }
 
-// console.log(parenthesis('(){}]'));
-// console.log(parenthesis('[{()()}({[]})]({}[({})])((((((()[])){}))[]{{{({({({{{{{{}}}}}})})})}}}))[][][]'));
-// console.log(parenthesis('({(()))}}'));
-// console.log(parenthesis(')({(()))}}('));
+console.log(parenthesis('(){}]'));
+console.log(parenthesis('[{()()}({[]})]({}[({})])((((((()[])){}))[]{{{({({({{{{{{}}}}}})})})}}}))[][][]'));
+console.log(parenthesis('({(()))}}'));
+console.log(parenthesis(')({(()))}}('));
 
 //find Min
 
@@ -170,7 +170,7 @@ function duplicates(array){
   return array;
 }
 
-// console.log(duplicates([1,1,1,1,1,2,3,3,4,5,5,6]));
+console.log(duplicates([1,1,1,1,1,2,3,3,4,5,5,6]));
 
 // var removeDuplicates = function(nums) {
 //   let values={};
