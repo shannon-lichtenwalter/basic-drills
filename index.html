@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Weather App</title>
+</head>
+
+<body>
+  <header>
+    <h1>Weather App</h1>
+  </header>
+  <main>
+    <form id="zipcode">
+      <fieldset>
+        <label for="zipcodeInput">Enter Zipcode Here</label>
+        <input name="zipcodeInput" id="zipcodeInput" type="number" max="9999999999" required />
+        <button type="submit">Get Temps!</button>
+      </fieldset>
+    </form>
+    <section id='weather'>
+      <h2 id='cityName'></h2>
+      <ul>
+        <li id='kelvin'></li>
+        <li id='farenheit'></li>
+        <li id='celcius'></li>
+        <li id='sky'></li>
+      </ul>
+    </section>
+  </main>
+  <script src="main.js"></script>
+</body>
+
+</html>

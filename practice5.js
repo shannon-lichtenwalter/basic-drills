@@ -61,7 +61,73 @@ function addStrings(num1, num2) {
 }
 
 console.log(addStrings('9333852702227987',
-'85731737104263'));
+  '85731737104263'));
 
 console.log(addStrings('123456789',
-'987654321'));
+  '987654321'));
+
+
+/**
+ * Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+
+Note:
+
+Each of the array element will not exceed 100.
+The array size will not exceed 200.
+ 
+
+Example 1:
+
+Input: [1, 5, 11, 5]
+
+Output: true
+
+Explanation: The array can be partitioned as [1, 5, 5] and [11].
+ 
+
+Example 2:
+
+Input: [1, 2, 3, 5]
+
+Output: false
+
+Explanation: The array cannot be partitioned into equal sum subsets.
+ */
+
+
+ //stumped on this one-- need to return to it later
+
+function canPartition(nums) {
+  let array = nums.sort((a,b) => a-b);
+  let lowest = array[array.length-1];
+  let sum= 0;
+  let values = {};
+  for(let i=0; i< array.length; i++){
+    sum+= array[i];
+    values[i] = [i];
+  }
+
+  if(sum % 2 !== 0){
+    return false;
+  }
+
+  let mid = Math.floor(sum/2);
+  for(const nums in values){
+
+  }
+
+
+}
+
+canPartition([1, 5, 11, 5]);
+
+
+const sumOf = function(list){
+  if (list.length === 1){
+    return list[0];
+  }
+  console.log('adding here: ' + (list[0] + '  ' + list.slice(1)));
+  return list[0] + sumOf(list.slice(1));
+};
+let list = [2,3,6,7,10];
+console.log(sumOf(list));
